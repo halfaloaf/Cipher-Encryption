@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>CYPHER</title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+    <!-- font awesome style -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+
+    <div class="hero_area">
+        <!-- header section starts -->
+        <header class="header_section">
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg custom_nav-container ">
+                    <a class="navbar-brand" href="index.html">
+                        <span>
+                            CYPHER
+                        </span>
+                    </a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class=""> </span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav  ">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="custom.html">CUSTOM ENCRYPTION</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ascii.html">ACSII ENCRYPTION</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- end header section -->
+    </div>
+
+    <!-- about section -->
+
+    <section class="about_section ">
+        <div class="container  ">
+            <div class="row">
+                <div class="col-md-10">
+
+
+                    <!-- put textbox here! -->
+                    <h1 class="header-text">Decryption Text Simulator</h1>
+
+                    <!-- Container -->
+                    <div class="text-container container-left">
+                        <!-- Input -->
+                        <div class="input-selection">
+                            <h3>Decrypted Message</h3>
+                            <textarea id="encryptedText" placeholder="Enter Text....."></textarea>
+                        </div>
+                        <!-- Input -->
+
+                        <!-- Output -->
+                        <div class="input-selection">
+                            <h3>Original Message</h3>
+                            <textarea id="decryptedText" placeholder="Deciphered Text...." readonly></textarea>
+                        </div>
+                        <!-- Output -->
+                    </div>
+                    <!-- Container -->
+
+                    <!-- Button -->
+                    <div class="header-text">
+                    <button onclick="decrypt()">Decrypt</button>
+                    <button onclick="clearInput()">Clear</button>
+                    <button onclick="window.location.href = 'custom.html'">Encryption Function</button>
+                  </div>
+                    <!-- Button -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end about section -->
+
+    <!-- jQery -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <!-- popper js -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <!-- bootstrap js -->
+    <script src="js/bootstrap.js"></script>
+    <!-- custom js -->
+    <script>
+      const symbolMap = {
+         
+      
+  '1': 'Z8gEyV2wJX',
+  '2': 'L7mAkR1sF2',
+  '3': 'C3qPdU0nPo',
+  '4': 'T6zLeYhV9M',
+  '5': 'N1rGwXlGsG',
+  '6': 'F2pSoA6hRz',
+  '7': 'H4jJXaUvAy',
+  '8': 'Y9kEb0gML8',
+  '9': 'W5dAzU4I6f',
+  '0': 'S7cRLbG6hQ',
+
+  'a': 'O8lCzYhPvM',
+  'b': 'I3tNbUbMyA',
+  'c': 'U6bTaLbDyS',
+  'd': 'K2hLi1V8Rl',
+  'e': 'X7mStZ0sHk',
+  'f': 'Q5zEdXyFvB',
+  'g': 'J6oLtRuDyP',
+  'h': 'A4fCcH7iMg',
+  'i': 'G1uCjBw9sF',
+  'j': 'E3kMcVyLlM',
+  'k': 'B9aTPzG0P0',
+  'l': 'D5lRc6pDoJ',
+  'm': 'V7kIf4qyZf',
+  'n': 'C2lHdRaRbW',
+  'o': 'M9mYL3ZvFd',
+  'p': 'F8hSvWQa1X',
+  'q': 'L4gIl6sBjH',
+  'r': 'N0dP2y9uVz',
+  's': 'R3wLh1YZqD',
+  't': 'T5oGf2Mu8V',
+  'u': 'Q6vBb9rHZd',
+  'v': 'S8zWdLyFvR',
+  'w': 'U3sK7LYiXy',
+  'x': 'J0vRqIcHyb',
+  'y': 'O6z5T8zL1K',
+  'z': 'Z4gVhBDlCn',
+
+  'A': 'X1sWmN2RzI',
+  'B': 'K3oHlG1X8M',
+  'C': 'A2vIWn9FgV',
+  'D': 'D7oZa4tRVv',
+  'E': 'H1SBvLYc7L',
+  'F': 'E4JRo6yKvR',
+  'G': 'U8uNy5iRhT',
+  'H': 'G3wLe7AoMj',
+  'I': 'T5RAaFy8vO',
+  'J': 'C7WkRL8xMV',
+  'K': 'P1qJSoB6bE',
+  'L': 'M9dYtG8qWo',
+  'M': 'X2hUYyPwNK',
+  'N': 'R6sClQlREo',
+  'O': 'L1QE6oEI3X',
+  'P': 'W8hRvMTplV',
+  'Q': 'ZWeNmRJgLj',
+  'R': 'K4mOFq3VhT',
+  'S': 'T7iByBPU5o',
+  'T': 'OWsCWrP6Xl',
+  'U': 'N4YySBvW8c',
+  'V': 'HdcJQgTXwS',
+  'W': 'BzWDmUyYwS',
+  'X': 'G5uFJvWwRq',
+  'Y': 'IYgPabYbQl',
+  'Z': 'FAtRoBvLgG'
+
+};
+
+
+    // Decrypt function
+function decrypt() {
+    // Get the encrypted text area and decrypted text area elements from the DOM
+    const encryptedTextArea = document.getElementById("encryptedText");
+    const decryptedTextArea = document.getElementById("decryptedText");
+
+    // Get the value of the encrypted text from the encrypted text area
+    const encryptedText = encryptedTextArea.value;
+    // Split the encrypted text into chunks of 10 characters each (or less)
+    const encryptedTextSplit = encryptedText.match(/.{1,10}/g) || [];
+
+    // Initialize an empty string to store the decrypted text
+    let decryptedText = "";
+
+    // Iterate through each chunk of the encrypted text
+    for (let i = 0; i < encryptedTextSplit.length; i++) {
+        // Get the current chunk
+        const current = encryptedTextSplit[i];
+        // Decrypt the chunk and append the result to the decrypted text string
+        const decryptedSymbol = getKeyByValue(symbolMap, current);
+        decryptedText += decryptedSymbol || current;
+    }
+
+    // Set the value of the decrypted text area to the decrypted text
+    decryptedTextArea.value = decryptedText;
+}
+
+// Function to find a key in an object by its value
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
+
+// Function to clear the input fields
+function clearInput() {
+    // Clear the value of the encrypted text area and decrypted text area
+    document.getElementById("encryptedText").value = "";
+    document.getElementById("decryptedText").value = "";
+}
+
+    </script>
+  
+
+</body>
+
+</html>

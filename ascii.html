@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>CYPHER</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<body class="sub_page">
+
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="index.html">
+            <span>
+              CYPHER
+            </span>
+          </a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class=""> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav  ">
+              <li class="nav-item ">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="custom.html">CUSTOM ENCRYPTION</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="ascii.html">ACSII ENCRYPTION</a>
+              </li>
+            
+            </ul>
+           
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- about section -->
+
+  <section class="about_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto"> <!-- Added mx-auto class here -->
+
+                <!-- put textbox here! -->
+
+                <h1 class="header-text2">ASCII Text Simulator</h1>
+
+                
+
+                <!--Button-->
+               
+                <div class="header-text2">
+                    <button onclick="encrypt()">Encrypt</button>
+                    <button onclick="decrypt()">Decrypt</button>
+                    <button onclick="clearInput()">Clear</button>
+                </div>
+                <div class="key">
+                  <label for="key">Encryption Key</label>
+                  <input type="number" id="key" min="1" max="255" value="3">
+              </div>
+                <!--Button-->
+
+            </div>
+        </div>
+    </div>
+    <!--Container-->
+    <div class="text-container">
+      <!--input-->
+      <div class="input-selection">
+          <h3>Original Message</h3>
+          <textarea id="input-text" placeholder="Enter Text....."></textarea>
+      </div>
+      <!--input-->
+
+      <!--output-->
+      <div class="input-selection">
+          <h3>Output Message</h3>
+          <textarea id="output-text" placeholder="Encrypted and Decrypted Text...." readonly></textarea>
+      </div>
+      <!--output-->
+  </div>
+  <!--Container-->
+  <div>
+    <p> _</p>
+  </div>
+</section>
+
+<!-- end about section -->
+
+  
+
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
+  <script>
+    /*encrypt*/
+    /* Encrypt function */
+function encrypt(){
+    // Get the input text from the input field
+    const inputText = document.getElementById("input-text").value;
+    // Get the encryption key from the input field and parse it as an integer
+    const key = parseInt(document.getElementById("key").value);
+
+    // Initialize an empty string to store the encrypted text
+    let encryptedText = "";
+
+    // Iterate through each character in the input text
+    for(let i = 0; i < inputText.length; i++){
+        // Get the ASCII code of the current character
+        const charCode = inputText.charCodeAt(i);
+
+        // Encrypt the character using the key and wrap around if necessary
+        encryptedText += String.fromCharCode((charCode + key) % 256);
+    }
+
+    // Set the value of the output text area to the encrypted text
+    document.getElementById("output-text").value = encryptedText;
+}
+
+/* Decrypt function */
+function decrypt(){
+    // Get the input text from the input field
+    const inputText = document.getElementById("input-text").value;
+    // Get the decryption key from the input field and parse it as an integer
+    const key = parseInt(document.getElementById("key").value);
+
+    // Initialize an empty string to store the decrypted text
+    let decryptedText = "";
+
+    // Iterate through each character in the input text
+    for(let i = 0; i < inputText.length; i++){
+        // Get the ASCII code of the current character
+        const charCode = inputText.charCodeAt(i);
+
+        // Decrypt the character using the key and wrap around if necessary
+        decryptedText += String.fromCharCode((charCode - key + 256) % 256);
+    }
+
+    // Set the value of the output text area to the decrypted text
+    document.getElementById("output-text").value = decryptedText;
+}
+
+/* Clear input function */
+function clearInput() {
+    // Clear the input and output text areas
+    document.getElementById("input-text").value = "";
+    document.getElementById("output-text").value = "";
+}
+
+
+</script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>
